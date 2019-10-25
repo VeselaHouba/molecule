@@ -1,6 +1,6 @@
-FROM: docker:git
+FROM docker:git
 
-RUN: apk update && \
+RUN apk update && \
   apk add --no-cache \
   docker \
   python3-dev \
@@ -17,5 +17,5 @@ RUN: apk update && \
   musl-dev \
   libffi-dev \
   openssl-dev \
-  openssh && \
-  pip3 install ansible==2.8.6 molecule==2.20 docker==3.7.0
+  openssh
+RUN pip3 install ansible==2.8.6 molecule==2.22 docker==3.7.0
