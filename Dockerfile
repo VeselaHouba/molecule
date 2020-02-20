@@ -18,4 +18,4 @@ RUN apk update && \
   libffi-dev \
   openssl-dev \
   openssh
-RUN pip3 install ansible==2.8.6 molecule==2.22 docker==3.7.0
+RUN pip3 install ansible==2.9.5 molecule==2.22 docker==3.7.0
