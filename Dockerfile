@@ -17,5 +17,14 @@ RUN apk update && \
   musl-dev \
   libffi-dev \
   openssl-dev \
-  openssh
-RUN pip3 install ansible==2.9.5 molecule==2.22 docker==3.7.0 netaddr
+  openssh \
+  shellcheck
+RUN pip3 install \
+  ansible==2.9.11 \
+  ansible-lint==4.2.0 \
+  molecule==3.0.6 \
+  docker==3.7.0 \
+  flake8==3.8.3 \
+  testinfra==5.2.2 \
+  netaddr
+COPY shellcheck_wrapper.sh /usr/bin/shellcheck_wrapper
