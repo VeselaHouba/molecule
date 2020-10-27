@@ -2,6 +2,7 @@ FROM docker:19-git
 
 RUN apk update && \
   apk add --no-cache \
+  bash \
   docker \
   python3-dev \
   py3-pip \
