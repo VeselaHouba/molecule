@@ -21,12 +21,14 @@ RUN apk update && \
   openssh \
   shellcheck
 RUN pip3 install \
+  wheel
+RUN pip3 install \
   ansible==2.9.11 \
   ansible-lint==4.3.5 \
-  molecule==3.0.6 \
   docker==3.7.0 \
   flake8==3.8.3 \
-  testinfra==5.2.2 \
+  molecule-hetznercloud==0.2.2 \
+  molecule==3.0.6 \
   netaddr \
-  molecule-hetznercloud==0.2.2
+  testinfra==5.2.2
 COPY shellcheck_wrapper.sh /usr/bin/shellcheck_wrapper
