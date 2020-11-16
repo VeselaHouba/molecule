@@ -28,5 +28,5 @@ RUN pip3 install \
   flake8==3.8.3 \
   testinfra==5.2.2 \
   netaddr \
-  molecule-hetznercloud
+  molecule-hetznercloud==0.2.2
 COPY shellcheck_wrapper.sh /usr/bin/shellcheck_wrapper
