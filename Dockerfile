@@ -23,12 +23,12 @@ RUN apk update && \
 RUN pip3 install \
   wheel
 RUN pip3 install \
-  ansible==2.9.11 \
-  ansible-lint==4.3.5 \
-  docker==3.7.0 \
-  flake8==3.8.3 \
+  ansible==2.10.3 \
+  ansible-lint==4.3.7 \
+  docker==4.3.1 \
+  flake8==3.8.4 \
   molecule-hetznercloud==0.2.2 \
-  molecule==3.0.6 \
+  molecule==3.0.4 \
   netaddr \
-  testinfra==5.2.2
+  pytest-testinfra==6.1.0
 COPY shellcheck_wrapper.sh /usr/bin/shellcheck_wrapper
