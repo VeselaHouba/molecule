@@ -30,5 +30,6 @@ RUN pip3 install \
   molecule-hetznercloud==0.2.2 \
   molecule==3.0.6 \
   netaddr \
-  testinfra==5.2.2
+  testinfra==5.2.2 \
+  yamllint
 COPY shellcheck_wrapper.sh /usr/bin/shellcheck_wrapper
