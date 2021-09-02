@@ -1,14 +1,15 @@
 def main(ctx):
 
   use_hetzner = ctx.input.use_hetzner
-  docker_images = []
-  hetzner_images = [
+  default_herzner_images = [
     "debian-9",
     "debian-10",
     "debian-11",
     "ubuntu-18.04",
     "ubuntu-20.04"
   ]
+  hetzner_images = getattr(ctx.input,"hetzner_images", default_herzner_images)
+  docker_images = []
 
   ############################################################################
 
