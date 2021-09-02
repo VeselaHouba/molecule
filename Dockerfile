@@ -24,12 +24,12 @@ RUN pip3 install \
   wheel
 RUN pip3 install \
   ansible==2.9.11 \
-  ansible-lint==4.3.5 \
-  docker==3.7.0 \
-  flake8==3.8.3 \
-  molecule-hetznercloud==0.2.2 \
-  molecule==3.0.6 \
+  ansible-lint==5.1.3 \
+  docker==5.0.2 \
+  flake8==3.9.2 \
+  molecule-hetznercloud==1.3.0 \
+  molecule==3.4.0 \
   netaddr \
-  testinfra==5.2.2 \
+  pytest-testinfra==6.4.0 \
   yamllint
 COPY shellcheck_wrapper.sh /usr/bin/shellcheck_wrapper
