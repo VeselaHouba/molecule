@@ -1,6 +1,5 @@
 def main(ctx):
 
-  use_hetzner = ctx.input.use_hetzner
   default_herzner_images = [
     "debian-9",
     "debian-10",
@@ -8,8 +7,16 @@ def main(ctx):
     "ubuntu-18.04",
     "ubuntu-20.04"
   ]
+  default_docker_images = [
+    "debian9",
+    "debian10",
+    "debian11",
+    "ubuntu1804",
+    "ubuntu2004",
+  ]
+  use_hetzner = getattr(ctx.input,"use_hetzner",False)
   hetzner_images = getattr(ctx.input,"hetzner_images", default_herzner_images)
-  docker_images = []
+  docker_images = getattr(ctx.input,"docker_images", default_docker_images)
 
   ############################################################################
 
@@ -103,6 +110,8 @@ def step_docker(os):
           "molecule --version",
           "MOLECULE_IMAGE=geerlingguy/docker-%s-ansible" % os,
           "export MOLECULE_IMAGE",
+          "curl https://raw.githubusercontent.com/VeselaHouba/molecule/master/molecule-docker/pull_files.sh > ci/pull_files.sh",
+          "/bin/bash ci/pull_files.sh",
           "molecule test --all"
         ]
       },

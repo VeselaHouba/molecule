@@ -27,6 +27,7 @@ RUN pip3 install \
   ansible-lint==5.1.3 \
   docker==5.0.2 \
   flake8==3.9.2 \
+  molecule-docker==1.0.2 \
   molecule-hetznercloud==1.3.0 \
   molecule==3.4.0 \
   netaddr \
