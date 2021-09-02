@@ -23,7 +23,7 @@ RUN apk update && \
 RUN pip3 install \
   wheel
 RUN pip3 install \
-  ansible==2.9.11 \
+  ansible==2.10.7 \
   ansible-lint==5.1.3 \
   docker==5.0.2 \
   flake8==3.9.2 \
