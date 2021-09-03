@@ -10,7 +10,9 @@ for SCENARIO in ${SCENARIOS}; do
     echo "Checking ${DESTFILE}"
     if [ ! -e ${DESTFILE} ]; then
       echo "${DESTFILE} does not exist, pulling"
-      curl "${BASEURL}/${DLFILE}" > "${DESTFILE}"
+      curl -s "${BASEURL}/${DLFILE}" > "${DESTFILE}"
+    else
+      echo "${DESTFILE} exists, skipping"
     fi
   done
 done
