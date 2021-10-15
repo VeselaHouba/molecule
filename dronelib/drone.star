@@ -185,7 +185,7 @@ def step_publish(oses):
             }
           },
           "commands": [
-            "ansible-galaxy role import --api-key $${GALAXY_API_KEY} $${DRONE_REPO_OWNER} $${DRONE_REPO_NAME}"
+            "ansible-galaxy role import --api-key $${GALAXY_API_KEY} $${DRONE_REPO_OWNER} $${DRONE_REPO_NAME} --branch $${DRONE_TAG}"
           ]
         },
         {
