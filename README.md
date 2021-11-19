@@ -42,3 +42,24 @@ data:
     - ubuntu1804
     - ubuntu2004
 ```
+
+### Loading ansible variables
+
+Append to converge:
+
+```YAML
+post_tasks:
+  - name: dump
+    changed_when: false
+    copy:
+      content: "{{ vars | to_yaml }}"
+      dest: /tmp/ansible-vars.yml
+```
+
+Load in molecule test
+
+```PYTHON
+stream = host.file('/tmp/ansible-vars.yml').content
+ansible_vars = yaml.load(stream, Loader=yaml.FullLoader)
+def_variable = ansible_vars['variable_name']
+```
