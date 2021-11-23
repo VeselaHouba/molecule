@@ -59,6 +59,10 @@ post_tasks:
 Load in molecule test
 
 ```PYTHON
+import yaml
+
+...
+
 stream = host.file('/tmp/ansible-vars.yml').content
 ansible_vars = yaml.load(stream, Loader=yaml.FullLoader)
 def_variable = ansible_vars['variable_name']
