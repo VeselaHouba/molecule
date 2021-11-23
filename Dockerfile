@@ -1,4 +1,5 @@
-FROM docker:19-git
+FROM docker:20-git
+ARG TARGETARCH
 
 RUN apk update && \
   apk add --no-cache \
@@ -18,8 +19,16 @@ RUN apk update && \
   musl-dev \
   libffi-dev \
   openssl-dev \
-  openssh \
-  shellcheck
+  openssh
+COPY shellcheck_download.sh /tmp/shellcheck_download.sh
+RUN apk add \
+  --no-cache \
+  --virtual build-deps \
+  xz \
+  wget && \
+  /tmp/shellcheck_download.sh && \
+  apk del build-deps && \
+  rm -f /tmp/shellcheck_download.sh
 RUN pip3 install \
   wheel
 RUN pip3 install \

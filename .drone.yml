@@ -2,14 +2,29 @@
 kind: pipeline
 name: default
 steps:
-  - name: docker
-    image: plugins/docker
+  - name: Prepare docker buildx
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
+    commands:
+      - sleep 5
+      - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+    volumes:
+      - name: dockersock
+        path: /var/run
+
+  - name: Docker buildx arm64
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
     settings:
+      experimental: true
       username: veselahouba
       password:
         from_secret: VH_DOCKER_PASSWORD
       repo: veselahouba/${DRONE_REPO_NAME/_/-}
       auto_tag: true
+      platforms:
+        - linux/amd64
+        - linux/arm64/v8
 
   - name: Slack notification
     image: plugins/slack
@@ -32,3 +47,15 @@ steps:
       status:
         - success
         - failure
+
+services:
+  - name: dind
+    image: docker:dind
+    privileged: true
+    volumes:
+      - name: dockersock
+        path: /var/run
+
+volumes:
+  - name: dockersock
+    temp: {}
