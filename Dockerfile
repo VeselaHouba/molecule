@@ -32,14 +32,14 @@ RUN apk add \
 RUN pip3 install \
   wheel
 RUN pip3 install \
-  ansible==2.10.7 \
-  ansible-lint==5.1.3 \
-  docker==5.0.2 \
-  flake8==3.9.2 \
-  molecule-docker==1.0.2 \
+  ansible==5.1.0 \
+  ansible-lint==5.3.2 \
+  docker==5.0.3 \
+  flake8==4.0.1 \
+  molecule-docker==1.1.0 \
   molecule-hetznercloud==1.3.0 \
-  molecule==3.4.0 \
+  molecule==3.5.2 \
   netaddr \
-  pytest-testinfra==6.4.0 \
+  pytest-testinfra==6.5.0 \
   yamllint
 COPY shellcheck_wrapper.sh /usr/bin/shellcheck_wrapper
