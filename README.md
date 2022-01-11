@@ -33,7 +33,7 @@ data:
 Docker example with custom list of images
 ```
 kind: template
-load: drone.star
+load: drone-docker.star
 
 data:
   docker_images:
@@ -42,6 +42,20 @@ data:
     - ubuntu1804
     - ubuntu2004
 ```
+
+Docker example with custom list of images, which generates matrix of all combinations of `server x client` from provided `docker_images`
+```
+kind: template
+load: drone-docker-server-client-matrix.star
+
+data:
+  docker_images:
+    - debian9
+    - debian10
+    - ubuntu1804
+    - ubuntu2004
+```
+Images are provided to molecule as `MOLECULE_IMAGE_SERVER` and `MOLECULE_IMAGE_CLIENT` env variables
 
 ### Loading ansible variables
 
