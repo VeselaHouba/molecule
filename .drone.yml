@@ -12,7 +12,8 @@ steps:
       - name: dockersock
         path: /var/run
 
-  - name: Docker buildx arm64
+  # auto_tag is not working for some reason
+  - name: Docker buildx arm64 master
     image: thegeeklab/drone-docker-buildx
     privileged: true
     settings:
@@ -21,10 +22,31 @@ steps:
       password:
         from_secret: VH_DOCKER_PASSWORD
       repo: veselahouba/${DRONE_REPO_NAME/_/-}
-      auto_tag: true
       platforms:
         - linux/amd64
         - linux/arm64/v8
+      auto_tag: true
+    when:
+      branch:
+        - master
+
+  - name: Docker buildx arm64 branch
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
+    settings:
+      experimental: true
+      username: veselahouba
+      password:
+        from_secret: VH_DOCKER_PASSWORD
+      repo: veselahouba/${DRONE_REPO_NAME/_/-}
+      platforms:
+        - linux/amd64
+        - linux/arm64/v8
+      tags: ${DRONE_BRANCH}
+    when:
+      branch:
+        exclude:
+          - master
 
   - name: Slack notification
     image: plugins/slack
