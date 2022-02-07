@@ -1,3 +1,4 @@
+---
 kind: template
 load: drone.star
 # Pipelines https://github.com/VeselaHouba/molecule/tree/master/dronelib

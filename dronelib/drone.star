@@ -1,7 +1,6 @@
 def main(ctx):
 
   default_herzner_images = [
-    "debian-9",
     "debian-10",
     "debian-11",
     "ubuntu-18.04",
