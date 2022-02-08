@@ -57,10 +57,11 @@ def step_hetzner(os):
         "commands": [
           "ansible --version",
           "molecule --version",
-          "REF=$$(echo $DRONE_COMMIT_REF | awk -F'/' '{print $$3}'|sed 's/_/-/g')",
+          "REF=$$(echo $DRONE_COMMIT_SHA | cut -b -7)",
           "REPO_NAME=$$(echo $DRONE_REPO_NAME | sed 's/_/-/g')",
           "MOLECULE_IMAGE=%s" % os,
-          "export MOLECULE_IMAGE REPO_NAME REF",
+          "OS_VERSION=%s" % os.replace('.','-'),
+          "export MOLECULE_IMAGE OS_VERSION REPO_NAME REF",
           "mkdir -p ci",
           "curl https://raw.githubusercontent.com/VeselaHouba/molecule/master/molecule-hetznercloud/pull_files.sh > ci/pull_files.sh",
           "/bin/bash ci/pull_files.sh",
