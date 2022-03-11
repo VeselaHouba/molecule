@@ -20,3 +20,10 @@
       shell: echo "{{ hostvars[item].ansible_default_ipv4.address }} {{ item }}" >> /etc/hosts
       with_items: "{{ groups['all'] }}"
       changed_when: false
+
+  post_tasks:
+    - name: dump
+      changed_when: false
+      copy:
+        content: "{{ vars | to_yaml }}"
+        dest: /tmp/ansible-vars.yml

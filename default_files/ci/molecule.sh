@@ -7,7 +7,7 @@ docker \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -w "/tmp/$(basename "${PWD}")" \
   -e MOLECULE_NO_LOG=false \
-  -e MOLECULE_IMAGE \
+  -e MOLECULE_IMAGE="${MOLECULE_IMAGE:-geerlingguy/docker-debian11-ansible}" \
   veselahouba/molecule bash -c "
   shellcheck_wrapper && \
   flake8 && \
