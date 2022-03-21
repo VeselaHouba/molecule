@@ -8,6 +8,7 @@ docker \
   -w "/tmp/$(basename "${PWD}")" \
   -e MOLECULE_NO_LOG=false \
   -e MOLECULE_IMAGE="${MOLECULE_IMAGE:-geerlingguy/docker-debian11-ansible}" \
+  -e OS_VERSION="${MOLECULE_IMAGE//./_}" \
   veselahouba/molecule bash -c "
   shellcheck_wrapper && \
   flake8 && \
